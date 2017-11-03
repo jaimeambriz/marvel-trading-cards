@@ -1,0 +1,11 @@
+.row{
+display: flex;
+flex-wrap: wrap;
+}
+
+.characters-avail{
+    background: red;
+}
+.my-team{
+    background: blue;
+}

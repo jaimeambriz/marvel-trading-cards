@@ -3,25 +3,42 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Marvel-Characters</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  <div id="marvel-characters">
-
-  </div>
-
-  <div id="my-characters">
-
+  <div class="container-fluid">
+    <h2 class="characters-avail">Characters available</h2>
+    <div class="row" id="marvel-characters">
+      <!-- <div class="col-sm-2 card">
+          <img src="${character.thumbnail.path}.${character.thumbnail.extension}" width="100">
+          <h3>${character.name}</h3>
+          <div>
+            <button class="btn-success" id="${character.id}" onclick="app.controllers.marvelController.add('${character.id}')">Add to Team</button>
+          </div>
+        </div> -->
+    </div>
+    <h2 class="my-team">Characters on my team</h2>
+    <div class="row" id="my-characters">
+      <!-- <div class="card">
+          <img src="${character.thumbnail.path}.${character.thumbnail.extension}" width="100">
+          <h3>${character.name}</h3>
+          <div>
+            <button class="btn-success" id="${character.id}" onclick="app.controllers.marvelController.remove('${character.id}')">Remove form Team</button>
+          </div>
+        </div> -->
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  
+
   <script src="marvel-service.js"></script>
 
   <script src="cards-controller.js"></script>
-  
+
   <script src="app.js"></script>
 </body>
 

@@ -1,37 +1,45 @@
-function MarvelService(){
-  var key = '?apikey=e44062bbc76b37176b08325d5265a0f3';
+function MarvelService() {
+  var key = 'apikey=5f820ca1703816f14d360d770f6435e8';
   var baseUrl = 'http://gateway.marvel.com/v1/public/'
-  
+
   var marvelCharacters = [];
   var myCharacters = [];
-  
-  
-  this.getMarvelCharacters = function(){
-    //what should this function return
+
+  this.getMarvelCharacters = function () {
+    return JSON.parse(JSON.stringify(marvelCharacters))
   }
-  
-  this.getMyCharacters = function(){
-    //what should this function return
+
+  this.getMyCharacters = function () {
+    return JSON.parse(JSON.stringify(myCharacters))
   }
-  
-  this.addToMyCharacters = function(id){
-    //in order to add a character to your list you will first need to find 
-    //the character by its id in the marvelCharacters array
+
+  this.addToMyCharacters = function (id) {
+    for (var i = 0; i < marvelCharacters.length; i++) {
+      var character = marvelCharacters[i];
+      if (id == character.id) {
+        myCharacters.push(character)
+        marvelCharacters.splice(i, 1)
+      }
+    }
+    // callWhenDone(myCharacters)
   }
-  
-  this.removeMyCharacter = function(id){
-    //you need to find the character that you want to remove by its id
-    //and remove it.
+
+  this.removeMyCharacter = function (id, callWhenDone) {
+    for (var i = 0; i < myCharacters.length; i++) {
+      var character = myCharacters[i];
+      if (id == character.id) {
+        marvelCharacters.push(character)
+        myCharacters.splice(i, 1)
+      }
+    }
+    callWhenDone(myCharacters)
   }
-  
-  
-  this.getCharacters = function(callWhenDone){
+
+  this.getCharacters = function (callWhenDone) {
     //Use &offset=Number to add pagination
-    $.get(baseUrl + 'characters'+key, function(response){
+    $.get(baseUrl + 'characters?' + "limit=10&offset=1450&" + key, function (response) {
       marvelCharacters = response.data.results;
       callWhenDone(marvelCharacters)
     })
   }
-  
-  
 }
